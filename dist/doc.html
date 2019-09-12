@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[A G M] Doc</title>
+    <link rel="shortcut icon" type="image/png" href="rotation/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="globalStyle.css">
+    <link rel="stylesheet" href="docStyle.css">
+    <link rel="stylesheet" href="landingStyle.css">
+    <link rel="stylesheet" href="footer.css">
+
+
+    <link rel="author" content="Harshdeep Goraya">
+  </head>
+
+  <body>
+    <div class="doc__bg"></div>
+    <nav class="headerDoc">
+      <h1 class="logoDoc">[A G M] <span class="logo__thinDoc">Doc</span></h1>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="index.html" class="link link--dark"><i class="fa fa-home"></i> HQ</a></li>
+        <li class="menu__item"><a href="https://GitHub.com/hg7777" class="link link--dark"><i class="fa fa-github"></i> GitHub</a></li>
+      </ul>
+    </nav>
+
+    <div class="wrapper">
+      <aside class="doc__nav">
+        <ul>
+          <li class="js-btn selected">Summary</li>
+          <li class="js-btn">Design & Goals</li>
+          <li class="js-btn">:: . .</li>
+          <li class="js-btn">:: = =</li>
+        </ul>
+      </aside>
+      <article class="doc__content">
+        <section class="js-section">
+          <h3 class="section__title">Executive Summary</h3>
+          <h6>In this project, I looked to design and implement a wireless mouse unit with gyroscope based
+              movement control. The aims of this project were to simulate cursor motion/click mechanisms
+              simply by using hand gestures; by moving the unit freely in the air. The challenge was to give
+              the user the ability to operate any computer unit as their hands are in midair; this would mean
+              taking wires and surfaces out of the picture.
+              <div style="height:20px;font-size:1px;">&nbsp;</div>
+              To make this possible, the STM32F103C8T6 [Blue Pill] was used as the main microcontroller as
+              it will be programmed for the interference with 2 push buttons [Left, Right], Bluetooth Module
+              HC-05 [For Wireless Communication], and an MPU-6050 [Gyroscope/Accelerometer]. In
+              addition, a Buck Converter [DC-to-DC] would be used to step down the voltage of the unit;
+              doing so to reduce the unit’s heat and extend the battery/lifetime. For the finishing touch, it
+              will be necessary to provide the user dynamic feedback; so an OLED screen will be put on the
+              wireless unit showing realtime sensor data points.
+              <div style="height:20px;font-size:1px;">&nbsp;</div>
+              Now, let’s take a look at the process flow; as the Bluetooth Module will be interfaced with the
+              Blue Pill, it will be able to establish UART communication [Receive and Transmit] with the
+              preferred laptop/computer the bluetooth is paired to. When the unit is on, the MPU-6050 IMU
+              sensor will give it’s dynamic positional values, as they will be used by the Blue Pill
+              Microcontroller. These values will then accordingly give instructions to the laptop/computer to
+              move the cursor dynamically in the desired direction; it will also send serial print data [Such as:
+              Left, Right, Up, Down, Left Click, Right Click, Double Click] to the laptop/computer through
+              bluetooth. The user will be provided the realtime X-Y coordinates dynamically on the OLED
+              display on the wireless unit, along with a moving circle graphic which will correspond to the X-Y
+              movement.
+              <div style="height:20px;font-size:1px;">&nbsp;</div>
+              Putting the picture together, the user will be able to simulate mouse movement by performing
+              an X-axis Pitch [Rotating unit Left or Right] , as well as a Y-axis Roll [Rotating
+              unit Forwards or Backwards] or [Both Together]. (Figures shown to the right)
+              This will coincide with the 2 push buttons [Left, Right] available to perform the
+              operations of Left Click, Right Click, and Double Click.</h6>
+              <hr/>
+
+        <!--  <h3 class="section__title">Installation</h3>
+          <div class="code__block code__block--notabs">
+            <pre class="code code--block">
+              <code>
+                $ terminal  ——config
+                  {
+                    “encryption”: true,
+                    “highlighting“: true,
+                    “prettyTable”: false,
+                    “font”: [“Helvetica”, “sans-serif”],
+                    “folder”: “~/Desktop“
+                  }
+              </code>
+            </pre>
+          </div> -->
+
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Design & Goals</h3>
+          <h6>With empasis on simplicity of use, the unit should be able to be used by relatively any user who
+              has some insight of operating a computer and using a mouse. The aim is to give that user the
+              ability to control the mouse away from the actual machine, whether they are standing, sitting,
+              laying, etc; as the relative space in front of them would serve as the ‘mousepad’ for them to
+              rotate the unit.
+              <div style="height:20px;font-size:1px;">&nbsp;</div>
+              In the design of the unit: the gyroscope/accelerometer data values will simulate only the cursor
+              movement (X-Y-axis), as it was troublesome to get it working in its Z-axis direction (for clicking
+              mechanism). In attempts to make this possible, the data rate being captured for this axis would
+              either zero out, and sometimes even fluctuate highly when moved. In this situation, it was not
+              feasible to even program a threshold value the Z-axis would have to reach relative to its
+              position to initiate a click function for the mouse. This is the point where 2 push buttons were
+              incorporated to perform the [Left Click, Right Click, Double Click] functions.
+              <div style="height:20px;font-size:1px;">&nbsp;</div>
+              This modification is what leaves the MPU-6050 in charge of capturing the data values of the tilt
+              only in the X-Y-axis, as the HC-05 module would communicate these values to correspond to
+              the movement of the cursor itself. [As the OLED would display these values for the user
+              dynamically]
+            </h6>
+
+            <table id="customers">
+            <tr>
+              <th>Block Diagram</th>
+              <th>Schematic</th>
+              <th>Default</th>
+            </tr>
+            <tr>
+              <td><img src="rotation/Block Diagram.png" alt="Block Diagram" style="width:100%;max-width:200px" ></td>
+              <td><img src="rotation/Breadboard Diagram.png" alt="Breadboard Diagram" style="width:100%;max-width:350px"></td>
+              <td>loading.</td>
+            </tr>
+          </table>
+
+
+
+
+
+        <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">TEMP</h3>
+          <p> L o a d i n g the r e s t of t h i s . .  .  .  .    .    .    .     .
+          <hr />
+        </section>
+        <section class="js-section">
+          <h3 class="section__title">Teri Pandi</h3>
+
+        </section>
+      </article>
+    </div>
+
+    <div class="content-wrap">
+      <footer class="footer">
+        <div class="social-media-links">
+          <span class="copyright">&copy; 2019 <span class="copyright__name">Harshdeep Goraya</span></span>
+          <ul>
+            <li>
+              <!-- GitHub -->
+              <a href="https://GitHub.com/hg7777" target="_blank">
+                <svg class="glow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title>
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <!-- LinkedIn -->
+              <a href="https://LinkedIn.com/in/hg7777" target="_blank">
+                <svg class="glow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <!-- Contact -->
+              <a class="popup" onclick="myFunction()">
+                <span class="popuptext" id="myPopup">harshdeepGoraya@gmail.com</span>
+
+                <style>
+                .popup {
+                  position: relative;
+                  display: inline-block;
+                  cursor: pointer;
+                  -webkit-user-select: none;
+                  -moz-user-select: none;
+                  -ms-user-select: none;
+                  user-select: none;
+                }
+
+                /* The actual popup */
+                .popup .popuptext {
+                  visibility: hidden;
+                  width: 250px;
+                  background-color: #555;
+                  color: #fff;
+                  text-align: center;
+                  border-radius: 6px;
+                  padding: 2px 0;
+                  position: absolute;
+                  z-index: 1;
+                  bottom: 125%;
+                  left: 50%;
+                  margin-left: -120px;
+                  margin-bottom: -22px;
+                }
+
+                /* Popup arrow */
+                .popup .popuptext::after {
+                  content: "";
+                  position: absolute;
+                  top: 100%;
+                  left: 50%;
+                  margin-left: -5px;
+                  border-width: 5px;
+                  border-style: solid;
+                  border-color: #555 transparent transparent transparent;
+                }
+
+                .popup .show {
+                  visibility: visible;
+                  -webkit-animation: fadeIn 1s;
+                  animation: fadeIn 1s;
+                }
+
+                /* Add animation (fade in the popup) */
+                @-webkit-keyframes fadeIn {
+                  from {opacity: 0;}
+                  to {opacity: 1;}
+                }
+
+                @keyframes fadeIn {
+                  from {opacity: 0;}
+                  to {opacity:1 ;}
+                }
+                </style>
+
+
+                <script>
+                // When the user clicks on div, open the popup
+                function myFunction() {
+                  var popup = document.getElementById("myPopup");
+                  popup.classList.toggle("show");
+                }
+                </script>
+
+                <svg class="glow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                  <path d="M486.4,0H25.6C11.461,0,0,11.461,0,25.6v384c0,14.138,11.461,25.6,25.6,25.6h179.2v59.733H128
+                      c-4.713,0-8.533,3.82-8.533,8.533S123.287,512,128,512h256c4.713,0,8.533-3.82,8.533-8.533s-3.82-8.533-8.533-8.533H221.867
+                      V435.2h68.267v25.6c0,4.713,3.82,8.533,8.533,8.533s8.533-3.82,8.533-8.533v-25.6h179.2c14.138,0,25.6-11.461,25.6-25.6v-384
+                      C512,11.461,500.539,0,486.4,0z M494.933,409.6c0,4.713-3.82,8.533-8.533,8.533H25.6c-4.713,0-8.533-3.82-8.533-8.533v-42.667
+                      h477.867V409.6z M494.933,349.867H17.067V25.6c0-4.713,3.82-8.533,8.533-8.533h460.8c4.713,0,8.533,3.82,8.533,8.533V349.867z"/>
+                  <path d="M413.278,37.239c-3.788-3.161-9.008-3.984-13.585-2.142l-232.218,93.756c-2.828,1.14-4.832,3.702-5.259,6.721
+                      c-0.426,3.019,0.79,6.036,3.191,7.915c2.401,1.879,5.622,2.334,8.45,1.193L381.44,60.868l-97.818,115.388
+                      c-1.971,2.326-2.551,5.527-1.522,8.397c1.029,2.87,3.511,4.973,6.511,5.517c3,0.544,6.062-0.554,8.033-2.88L396.689,69.291
+                      l-13.542,68.096l-16.333,109.039c-0.059,0.446-0.333,0.835-0.734,1.041c-0.36,0.204-0.801,0.204-1.161,0l-63.659-25.028h-0.06
+                      l-4.173-1.647l-32.495-13.611c-3.535-1.463-7.611-0.346-9.907,2.714c-0.068,0.077-0.111,0.179-0.179,0.265
+                      c-0.42,0.487-0.783,1.019-1.084,1.587c-0.094,0.239-0.06,0.478-0.137,0.708s-0.213,0.316-0.273,0.503l-17.655,59.255
+                      l-18.773-68.053l0.077-0.051c0.077,0,0.128-0.085,0.205-0.111c0.731-0.326,1.412-0.754,2.022-1.271l79.753-59.366
+                      c2.439-1.829,3.717-4.821,3.352-7.847c-0.365-3.027-2.316-5.629-5.12-6.827s-6.033-0.808-8.472,1.021l-76.373,56.875
+                      l-85.82-34.731c-2.847-1.257-6.153-0.864-8.626,1.024c-2.473,1.889-3.722,4.974-3.259,8.052s2.565,5.659,5.485,6.736l0.043-0.017
+                      l76.911,31.13c0.292,1.007,0.769,1.951,1.408,2.782l24.107,87.432c1.667,5.757,6.952,9.707,12.945,9.677h0.154
+                      c3.273-0.055,6.413-1.309,8.823-3.524c0.188-0.154,0.41-0.213,0.589-0.384l55.467-54.613l58.334,23.125
+                      c2.232,0.948,4.632,1.435,7.057,1.434c3.098-0.006,6.144-0.802,8.849-2.313c5.006-2.781,8.439-7.726,9.293-13.389l16.213-108.732
+                      l17.92-89.882C418.874,45.496,417.113,40.443,413.278,37.239z M257.22,258.509l9.523-31.915l12.971,5.444l3.106,1.237
+                      L257.22,258.509z"/>
+                  <path d="M143.36,204.22c-2.828-3.77-8.176-4.534-11.947-1.707l-51.2,38.127c-2.938,2.204-4.137,6.041-2.975,9.525
+                      S81.66,256,85.333,256c1.846,0,3.643-0.599,5.12-1.707l51.2-38.127C145.424,213.339,146.188,207.99,143.36,204.22z"/>
+                  <path d="M182.4,274.935l-42.667,34.133c-3.681,2.945-4.277,8.317-1.331,11.998c2.945,3.681,8.317,4.277,11.998,1.331
+                      l42.667-34.133c3.681-2.945,4.277-8.317,1.331-11.998C191.452,272.586,186.081,271.99,182.4,274.935z"/>
+                  <path d="M326.938,278.035c-2.896-0.954-6.08-0.292-8.355,1.739l-42.667,38.127c-3.516,3.139-3.821,8.533-0.683,12.049
+                      c3.139,3.516,8.533,3.821,12.049,0.683l42.667-38.127c2.274-2.03,3.293-5.12,2.671-8.105
+                      C332,281.416,329.834,278.989,326.938,278.035z"/>
+                </svg>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><title>Contact</title>
+                  <path d="M486.4,0H25.6C11.461,0,0,11.461,0,25.6v384c0,14.138,11.461,25.6,25.6,25.6h179.2v59.733H128
+                      c-4.713,0-8.533,3.82-8.533,8.533S123.287,512,128,512h256c4.713,0,8.533-3.82,8.533-8.533s-3.82-8.533-8.533-8.533H221.867
+                      V435.2h68.267v25.6c0,4.713,3.82,8.533,8.533,8.533s8.533-3.82,8.533-8.533v-25.6h179.2c14.138,0,25.6-11.461,25.6-25.6v-384
+                      C512,11.461,500.539,0,486.4,0z M494.933,409.6c0,4.713-3.82,8.533-8.533,8.533H25.6c-4.713,0-8.533-3.82-8.533-8.533v-42.667
+                      h477.867V409.6z M494.933,349.867H17.067V25.6c0-4.713,3.82-8.533,8.533-8.533h460.8c4.713,0,8.533,3.82,8.533,8.533V349.867z"/>
+                  <path d="M413.278,37.239c-3.788-3.161-9.008-3.984-13.585-2.142l-232.218,93.756c-2.828,1.14-4.832,3.702-5.259,6.721
+                      c-0.426,3.019,0.79,6.036,3.191,7.915c2.401,1.879,5.622,2.334,8.45,1.193L381.44,60.868l-97.818,115.388
+                      c-1.971,2.326-2.551,5.527-1.522,8.397c1.029,2.87,3.511,4.973,6.511,5.517c3,0.544,6.062-0.554,8.033-2.88L396.689,69.291
+                      l-13.542,68.096l-16.333,109.039c-0.059,0.446-0.333,0.835-0.734,1.041c-0.36,0.204-0.801,0.204-1.161,0l-63.659-25.028h-0.06
+                      l-4.173-1.647l-32.495-13.611c-3.535-1.463-7.611-0.346-9.907,2.714c-0.068,0.077-0.111,0.179-0.179,0.265
+                      c-0.42,0.487-0.783,1.019-1.084,1.587c-0.094,0.239-0.06,0.478-0.137,0.708s-0.213,0.316-0.273,0.503l-17.655,59.255
+                      l-18.773-68.053l0.077-0.051c0.077,0,0.128-0.085,0.205-0.111c0.731-0.326,1.412-0.754,2.022-1.271l79.753-59.366
+                      c2.439-1.829,3.717-4.821,3.352-7.847c-0.365-3.027-2.316-5.629-5.12-6.827s-6.033-0.808-8.472,1.021l-76.373,56.875
+                      l-85.82-34.731c-2.847-1.257-6.153-0.864-8.626,1.024c-2.473,1.889-3.722,4.974-3.259,8.052s2.565,5.659,5.485,6.736l0.043-0.017
+                      l76.911,31.13c0.292,1.007,0.769,1.951,1.408,2.782l24.107,87.432c1.667,5.757,6.952,9.707,12.945,9.677h0.154
+                      c3.273-0.055,6.413-1.309,8.823-3.524c0.188-0.154,0.41-0.213,0.589-0.384l55.467-54.613l58.334,23.125
+                      c2.232,0.948,4.632,1.435,7.057,1.434c3.098-0.006,6.144-0.802,8.849-2.313c5.006-2.781,8.439-7.726,9.293-13.389l16.213-108.732
+                      l17.92-89.882C418.874,45.496,417.113,40.443,413.278,37.239z M257.22,258.509l9.523-31.915l12.971,5.444l3.106,1.237
+                      L257.22,258.509z"/>
+                  <path d="M143.36,204.22c-2.828-3.77-8.176-4.534-11.947-1.707l-51.2,38.127c-2.938,2.204-4.137,6.041-2.975,9.525
+                      S81.66,256,85.333,256c1.846,0,3.643-0.599,5.12-1.707l51.2-38.127C145.424,213.339,146.188,207.99,143.36,204.22z"/>
+                  <path d="M182.4,274.935l-42.667,34.133c-3.681,2.945-4.277,8.317-1.331,11.998c2.945,3.681,8.317,4.277,11.998,1.331
+                      l42.667-34.133c3.681-2.945,4.277-8.317,1.331-11.998C191.452,272.586,186.081,271.99,182.4,274.935z"/>
+                  <path d="M326.938,278.035c-2.896-0.954-6.08-0.292-8.355,1.739l-42.667,38.127c-3.516,3.139-3.821,8.533-0.683,12.049
+                      c3.139,3.516,8.533,3.821,12.049,0.683l42.667-38.127c2.274-2.03,3.293-5.12,2.671-8.105
+                      C332,281.416,329.834,278.989,326.938,278.035z"/>
+                  </svg>
+                </a>
+            </li>
+          <!-- ADD IT UP HERE +
+          <li>
+              <a href="#">
+                <svg class="glow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                  <path class="st0" d="M15 2.8c4 0 4.4 0 6 0.1 1.4 0.1 2.2 0.3 2.8 0.5 0.7 0.3 1.2 0.6 1.7 1.1 0.5 0.5 0.8 1 1.1 1.7C26.8 6.8 27 7.6 27.1 9c0.1 1.6 0.1 2 0.1 6s0 4.4-0.1 6c-0.1 1.4-0.3 2.2-0.5 2.8 -0.3 0.7-0.6 1.2-1.1 1.7 -0.5 0.5-1 0.8-1.7 1.1 -0.5 0.2-1.3 0.4-2.8 0.5 -1.6 0.1-2 0.1-6 0.1s-4.4 0-6-0.1c-1.4-0.1-2.2-0.3-2.8-0.5 -0.7-0.3-1.2-0.6-1.7-1.1 -0.5-0.5-0.8-1-1.1-1.7C3.2 23.2 3 22.4 2.9 21c-0.1-1.6-0.1-2-0.1-6s0-4.4 0.1-6C3 7.6 3.2 6.8 3.4 6.2 3.7 5.5 4 5.1 4.5 4.5c0.5-0.5 1-0.8 1.7-1.1C6.8 3.2 7.6 3 9 2.9 10.6 2.8 11 2.8 15 2.8M15 0.2c-4 0-4.5 0-6.1 0.1C7.3 0.3 6.2 0.6 5.3 0.9c-1 0.4-1.8 0.9-2.6 1.7C1.8 3.5 1.3 4.3 0.9 5.3c-0.4 0.9-0.6 2-0.7 3.6C0.2 10.5 0.1 11 0.1 15c0 4 0 4.5 0.1 6.1 0.1 1.6 0.3 2.7 0.7 3.6 0.4 1 0.9 1.8 1.7 2.6 0.8 0.8 1.7 1.3 2.6 1.7 0.9 0.4 2 0.6 3.6 0.7 1.6 0.1 2.1 0.1 6.1 0.1s4.5 0 6.1-0.1c1.6-0.1 2.7-0.3 3.6-0.7 1-0.4 1.8-0.9 2.6-1.7 0.8-0.8 1.3-1.7 1.7-2.6 0.4-0.9 0.6-2 0.7-3.6 0.1-1.6 0.1-2.1 0.1-6.1s0-4.5-0.1-6.1c-0.1-1.6-0.3-2.7-0.7-3.6 -0.4-1-0.9-1.8-1.7-2.6 -0.8-0.8-1.7-1.3-2.6-1.7 -0.9-0.4-2-0.6-3.6-0.7C19.5 0.2 19 0.2 15 0.2L15 0.2z"/>
+                  <path class="st0" d="M15 7.4c-4.2 0-7.6 3.4-7.6 7.6s3.4 7.6 7.6 7.6 7.6-3.4 7.6-7.6S19.2 7.4 15 7.4zM15 20c-2.7 0-5-2.2-5-5s2.2-5 5-5c2.7 0 5 2.2 5 5S17.7 20 15 20z"/>
+                  <circle class="st0" cx="22.9" cy="7.1" r="1.8"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                  <path class="st0" d="M15 2.8c4 0 4.4 0 6 0.1 1.4 0.1 2.2 0.3 2.8 0.5 0.7 0.3 1.2 0.6 1.7 1.1 0.5 0.5 0.8 1 1.1 1.7C26.8 6.8 27 7.6 27.1 9c0.1 1.6 0.1 2 0.1 6s0 4.4-0.1 6c-0.1 1.4-0.3 2.2-0.5 2.8 -0.3 0.7-0.6 1.2-1.1 1.7 -0.5 0.5-1 0.8-1.7 1.1 -0.5 0.2-1.3 0.4-2.8 0.5 -1.6 0.1-2 0.1-6 0.1s-4.4 0-6-0.1c-1.4-0.1-2.2-0.3-2.8-0.5 -0.7-0.3-1.2-0.6-1.7-1.1 -0.5-0.5-0.8-1-1.1-1.7C3.2 23.2 3 22.4 2.9 21c-0.1-1.6-0.1-2-0.1-6s0-4.4 0.1-6C3 7.6 3.2 6.8 3.4 6.2 3.7 5.5 4 5.1 4.5 4.5c0.5-0.5 1-0.8 1.7-1.1C6.8 3.2 7.6 3 9 2.9 10.6 2.8 11 2.8 15 2.8M15 0.2c-4 0-4.5 0-6.1 0.1C7.3 0.3 6.2 0.6 5.3 0.9c-1 0.4-1.8 0.9-2.6 1.7C1.8 3.5 1.3 4.3 0.9 5.3c-0.4 0.9-0.6 2-0.7 3.6C0.2 10.5 0.1 11 0.1 15c0 4 0 4.5 0.1 6.1 0.1 1.6 0.3 2.7 0.7 3.6 0.4 1 0.9 1.8 1.7 2.6 0.8 0.8 1.7 1.3 2.6 1.7 0.9 0.4 2 0.6 3.6 0.7 1.6 0.1 2.1 0.1 6.1 0.1s4.5 0 6.1-0.1c1.6-0.1 2.7-0.3 3.6-0.7 1-0.4 1.8-0.9 2.6-1.7 0.8-0.8 1.3-1.7 1.7-2.6 0.4-0.9 0.6-2 0.7-3.6 0.1-1.6 0.1-2.1 0.1-6.1s0-4.5-0.1-6.1c-0.1-1.6-0.3-2.7-0.7-3.6 -0.4-1-0.9-1.8-1.7-2.6 -0.8-0.8-1.7-1.3-2.6-1.7 -0.9-0.4-2-0.6-3.6-0.7C19.5 0.2 19 0.2 15 0.2L15 0.2z"/>
+                  <path class="st0" d="M15 7.4c-4.2 0-7.6 3.4-7.6 7.6s3.4 7.6 7.6 7.6 7.6-3.4 7.6-7.6S19.2 7.4 15 7.4zM15 20c-2.7 0-5-2.2-5-5s2.2-5 5-5c2.7 0 5 2.2 5 5S17.7 20 15 20z"/>
+                  <circle class="st0" cx="22.9" cy="7.1" r="1.8"/>
+                </svg>
+              </a>
+            </li> -->
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="terminal.js"></script>
+  </body>
+</html>
