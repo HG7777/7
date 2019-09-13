@@ -32,9 +32,9 @@
       <aside class="doc__nav">
         <ul>
           <li class="js-btn selected">Summary</li>
-          <li class="js-btn">Design & Goals</li>
-          <li class="js-btn">:: . .</li>
-          <li class="js-btn">:: = =</li>
+          <li class="js-btn">Design Overview</li>
+          <li class="js-btn">Retrospective</li>
+          <li class="js-btn">Statement</li>
         </ul>
       </aside>
       <article class="doc__content">
@@ -90,7 +90,7 @@
 
         </section>
         <section class="js-section">
-          <h3 class="section__title">Design & Goals</h3>
+          <h3 class="section__title">Design Overview</h3>
           <h6>With empasis on simplicity of use, the unit should be able to be used by relatively any user who
               has some insight of operating a computer and using a mouse. The aim is to give that user the
               ability to control the mouse away from the actual machine, whether they are standing, sitting,
@@ -111,36 +111,81 @@
               dynamically]
             </h6>
 
-            <table id="customers">
-            <tr>
-              <th>Block Diagram</th>
-              <th>Schematic</th>
-              <th>Default</th>
-            </tr>
-            <tr>
-              <td><img src="rotation/Block Diagram.png" alt="Block Diagram" style="width:100%;max-width:200px" ></td>
-              <td><img src="rotation/Breadboard Diagram.png" alt="Breadboard Diagram" style="width:100%;max-width:350px"></td>
-              <td>loading.</td>
-            </tr>
-          </table>
+            <h6 class="italic" style="text-align:left;">
+                Block Overview
+                <span style="float:right;">
+                    Wiring Diagram
+                </span>
+            </h6>
+
+          <!-- thumbnail image wrapped in a link -->
+          <a href="#Block Overview">
+            <img src="rotation/Block Diagram.png" align="left" class="thumbnail">
+          </a>
+          <!-- lightbox container hidden with CSS -->
+          <a href="#_" class="lightbox" id="Block Overview">
+            <img src="rotation/Block Diagram.png" alt="Block Diagram">
+          </a>
 
 
-
-
-
-        <hr />
+          <!-- thumbnail image wrapped in a link -->
+          <a href="#Wiring Diagram">
+            <img src="rotation/Breadboard Diagram.png" align="right" class="thumbnail">
+          </a>
+          <!-- lightbox container hidden with CSS -->
+          <a href="#__" class="lightbox" id="Wiring Diagram">
+            <img src="rotation/Breadboard Diagram.png">
+          </a>
+          <h1 style="text-align:middle;">&nbsp</h1>
+          <h1 style="text-align:middle;">&nbsp</h1>
+          <h1 style="text-align:middle;">&nbsp</h1>
         </section>
+
         <section class="js-section">
-          <h3 class="section__title">TEMP</h3>
-          <p> L o a d i n g the r e s t of t h i s . .  .  .  .    .    .    .     .
-          <hr />
+          <h3 class="section__title">&nbsp&nbsp&nbsp<hr/></h3>
         </section>
-        <section class="js-section">
-          <h3 class="section__title">Teri Pandi</h3>
 
+        <section class="js-section">
+          <h3 class="section__title">Retrospective</h3>
+          <h6>
+            Overall, the key points were hit in the creation of the AGM: Accuracy, Speed of Execution,
+            Consistency, Usability, and Safety. The prototype is fully capable of effectively giving the
+            user control of a mouse, in terms of cursor movement and clicking as they are also provided
+            dynamic feedback of relative position.
+            <div style="height:20px;font-size:1px;">&nbsp;</div>
+            The key here was to ensure a fully wireless mouse unit, which could communicate via
+            Bluetooth, and create input values for movement based on rotation of the unit in the air; all
+            this while keeping the size of the unit small and safe from any dangerous charge. As the
+            creation of the unit progressed, the real challenge was to give the user control without having
+            to press anything [utilizing Z-axis click]; though with the constraints involved this functionality
+            was implemented using push buttons.
+            <div style="height:20px;font-size:1px;">&nbsp;</div>
+            In attempts to break the existing paradigm of a computer mouse, I believe there is a substantial
+            potential for this unit to grow. More specifically, extending the customization ability to the user
+            in terms of swipe/vibration gestures, minimizing the size of the unit, higher resolution cursor
+            movement, as well as manufacturing a sleek shell this unit can reside in. The greatest challenge for
+            enhancing this unit is to base the cursor movement purely off of 2-D positioning using
+            accelerometer movement readings; though this is a mission for the next chapter.
+            <div style="height:20px;font-size:1px;">&nbsp;</div>
+            In entirety, I am completely satisfied, but not at all complacent with the AGM; yet.
+          </h6>
         </section>
-      </article>
-    </div>
+        <hr/>
+
+        <section class="js-section">
+          <h3 class="section__title">Statement</h3>
+        </section>
+        <h6>I pledge that all contributions to this project were made by my self; including but
+        not limited to: <br>- Design<br>- Hardware Pin Configuration<br>- Software Programs<br>- Functionality
+        <br>- Analysis/Simulation<br>- & Prototyping<br><br>As [external sources] aided me in obtaining design inspiration,
+        documents [module datasheets], and python module: [pyautogui] a simple mouse library.
+        </h6>
+        <h6 class="italic" style="float:right">
+          -&nbsp H. Goraya
+        </h6>
+
+    </article>
+  </div>
 
     <div class="content-wrap">
       <footer class="footer">
