@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>[A G M]</title>
-      <link rel="shortcut icon" type="image/png"  href="rotation/icon.png">
+      <link rel="shortcut icon" type="image/png" href="rotation/icon.png">
       <meta name="description" content="[Air Gesture Mouse]">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
@@ -125,20 +125,27 @@
       <hr>
 
       <style>
-      video {
-        width: 100%;
-        height: auto;
+      .video-container {
+        position:relative;
+      	padding-bottom:56.25%;
+      	padding-top:30px;
+      	height:0;
+      	overflow:hidden;
       }
-      iframe {
-        width: 338px;
-        height: 450px;
+      .video-container iframe, .video-container object, .video-container embed {
+      	position:absolute;
+      	top:0;
+      	left:0;
+      	width:100%;
+      	height:100%;
       }
       </style>
 
       <h3 class="section__title">[A G M] Demo</h3>
-      <video align="center" width="920" height="420" poster="./rotation/icon.jpg" controls playsinline preload>
-        <source src="./rotation/AGM.mp4" type="video/mp4">
-      </video>
+      <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/aC0i-I9npO4"
+      frameborder="0" allowfullscreen></iframe>
+    </div>
 
       <hr>
 
