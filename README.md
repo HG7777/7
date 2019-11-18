@@ -12,4 +12,4 @@
 - Wires
 
 ### Hardware Schematic :
-![Hardware Schematic](/Schematics/Breadboard Diagram.png)
+![Hardware Schematic](/schematics/Breadboard Diagram.png)
