@@ -27,4 +27,32 @@
 ### Block Diagram :
 ![Block Diagram](https://raw.githubusercontent.com/HG7777/AGM/master/schematics/Block%20Diagram.png)
 
-## Software :
+## Software Dependencies :
+###### Release Used : Python 3.6.5 x86-64
+##### For Windows : Run the dependencies script 
+```
+install.bat
+```
+##### For Mac OS : Install dependencies individually
+```
+pip3 install pyautogui
+pip3 install python3-xlib
+pip3 install pyserial
+```
+##### For Linux : Install dependencies individually
+```
+sudo pip3 install pyautogui
+sudo pip3 install python3-xlib
+sudo pip3 install pyserial
+```
+
+## Hardware Pin Configuration
+After configuring & connecting the STM32F103C8T6 [Blue Pill] to your machine, through the Arduino IDE you will be able to select the method of upload: `serial` as well as select the corresponding communications channel: `port`.
+
+##### Now you can open the [A G M] configuration code in the file : `airGestureMouse.ino`
+##### Press the reset button on the Blue Pill board and hit upload button on the Arduino IDE; compilation and upload process should initiate.
+###### For deeper insight on the Blue Pill, please refer to this [Guide](https://www.techshopbd.com/uploads/product_document/STM32bluepillarduinoguide(1).pdf): 
+##### :warning:Warning : Take Precaution:warning:
+###### - The +5V pins on this board are directly connected to the +5V pin of the USB connector. There is no protection in place. Do not power this board through USB and an external power supply *AT THE SAME TIME*.
+
+## 
