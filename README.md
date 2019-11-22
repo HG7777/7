@@ -51,8 +51,7 @@ After configuring & connecting the STM32F103C8T6 [Blue Pill] to your machine, th
 ##### Now you can open the [A G M] configuration code in the file : `airGestureMouse.ino`
 ##### Press the reset button on the Blue Pill board and hit upload button on the Arduino IDE; compilation and upload process should initiate.
 ##### :warning:Warning : Take Precaution:warning:
-###### - The +5V pins on this board are directly connected to the +5V pin of the USB connector. There is no protection in place. Do not power this board through USB and an external power supply *AT THE SAME TIME*.
----
-###### For deeper insight on the Blue Pill, please refer to this [Guide](https://www.techshopbd.com/uploads/product_document/STM32bluepillarduinoguide(1).pdf): 
+###### The +5V pins on this board are directly connected to the +5V pin of the USB connector. There is no protection in place. Do not power this board through USB and an external power supply *AT THE SAME TIME*.
+> ###### For deeper insight on the Blue Pill, please refer to this [Guide](https://www.techshopbd.com/uploads/product_document/STM32bluepillarduinoguide(1).pdf): 
 
 ## 
