@@ -90,3 +90,6 @@ To Initiate [A G M] **Phase 1**, Run:
 ```
 python mouse.py
 ```
+---
+###### Contact Me for Ideation | Inquiries | [A G M] Blueprints
+> ###### - Harshdeep Goraya
