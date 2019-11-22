@@ -86,7 +86,7 @@ At this point:
 > ###### Serial Data *[Left, Right, Up, Down, Left Click, Right Click, Double Click]* is ready to print on the console--corresponding to unit tilt sequences that will simulate cursor motions and click functions *[as relative realtime X-Y coordinates of the cursor will be displayed on the OLED]*.
 
 #### Command Line Utility
-To Initiate, Run:
+To Initiate [A G M] **Phase 1**, Run:
 ```
 python mouse.py
 ```
