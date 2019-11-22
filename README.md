@@ -7,7 +7,7 @@
 ##### Now, let’s take a look at the process flow; as the Bluetooth Module will be interfaced with the Blue Pill, it will be able to establish UART communication [Receive and Transmit] with the preferred laptop/computer the bluetooth is paired to. When the unit is on, the MPU-6050 IMU sensor will give it’s dynamic positional values, as they will be used by the Blue Pill Microcontroller. These values will then accordingly give instructions to the laptop/computer to move the cursor dynamically in the desired direction; it will also send serial print data [Such as: Left, Right, Up, Down, Left Click, Right Click, Double Click] to the laptop/computer through bluetooth. The user will be provided the realtime X-Y coordinates dynamically on the OLED display on the wireless unit, along with a moving circle graphic which will correspond to the X-Y movement.
  
 ##### Putting the picture together, the user will be able to simulate mouse movement by performing an X-axis Pitch [Rotating unit Left or Right] , as well as a Y-axis Roll [Rotating unit Forwards or Backwards] or [Both Together]. (Figures shown below) This will coincide with the 2 push buttons [Left, Right] available to perform the operations of Left Click, Right Click, and Double Click.
-> ![X-axis Pitch : Y-axis Roll](https://raw.githubusercontent.com/HG7777/AGM/master/node_modules/pitchRoll.png)
+> ![X-axis Pitch : Y-axis Roll](https://raw.githubusercontent.com/HG7777/AGM/master/schematics/pitchRoll.png)
 
 ## Hardware :
 - STM32F103C8T6 [Blue Pill]  -  ARM Cortex M3 Microcontroller
