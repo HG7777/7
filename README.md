@@ -92,4 +92,4 @@ python mouse.py
 ```
 ---
 ###### Contact Me for Ideation | Inquiries | [A G M] Blueprints
-> ###### - Harshdeep Goraya
+> ###### *- Harshdeep Goraya*
