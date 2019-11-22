@@ -65,9 +65,28 @@ Open your machine's bluetooth settings to connect and pair the: `HC-05`.
 
 By default the **Passkey** is set to: `1234`.
 
-> ###### At this point if you have successfully established connection, the HC-05 red LED indicator will change its blinking pattern and at times won't blink at all.
+> ###### At this point if you have *successfully* established connection, the HC-05 red LED indicator will change its blinking pattern and at times won't blink at all.
+
+## Incoming COM Port :
+After the HC-05 is connected, you will have to *identify* the **Incoming Bluetooth COM Port**.
+
+> ###### Depending on your machine, there are numerous ways to do this. Please refer to the Web.
+> ###### For Windows to open HC-05 Properties: Control Panel > Hardware and Sound > Devices and Printers > Double Click on HC-05 > Click on Hardware tab. 
+> ###### ---> You should see :  Standard Serial over Bluetooth link (COM#)  |  *where # is the incoming port number*.
+
+You can now *edit* the [A G M] **Master Program** in the file : `mouse.py`
+
+On line 13, *change* the **Incoming COM Port** to your corresponding number and *save*.
+```
+ser=serial.Serial(port='COM3', baudrate=9600, timeout=0.1)     # Incoming COM Port of the HC-05
+```
 
 ## Initiate [A G M] :
-###### Command Line Utility
+At this point:
+> ###### Serial Data *[Left, Right, Up, Down, Left Click, Right Click, Double Click]* is ready to print on the console--corresponding to unit tilt sequences that will simulate cursor motions and click functions *[as relative realtime X-Y coordinates of the cursor will be displayed on the OLED]*.
 
-
+#### Command Line Utility
+To Initiate, Run:
+```
+python mouse.py
+```
