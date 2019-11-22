@@ -45,8 +45,8 @@ sudo pip3 install python3-xlib
 sudo pip3 install pyserial
 ```
 
-## Hardware Pin Configuration
-After configuring & connecting the STM32F103C8T6 [Blue Pill] to your machine, through the Arduino IDE you will be able to select the **method of upload**: `serial` as well as select the **corresponding communications channel**: `port`.
+## Hardware Pin Configuration :
+After configuring & connecting the STM32F103C8T6 [Blue Pill] to your machine, through the Arduino IDE you will be able to select the **method of upload**: `serial` as well as select the **corresponding communications channel**: `COM port`.
 
 Now you can open the [A G M] **configuration code** in the file : `airGestureMouse.ino`
 
@@ -55,4 +55,19 @@ Press the **reset button** on the Blue Pill board and hit the **upload button** 
 ###### The +5V pins on this board are directly connected to the +5V pin of the USB connector. There is no protection in place. Do not power this board through USB and an external power supply *AT THE SAME TIME*.
 > ###### For deeper insight on the Blue Pill, please refer to this [Guide](https://www.techshopbd.com/uploads/product_document/STM32bluepillarduinoguide(1).pdf): 
 
-## 
+## Input Voltage :
+After the hardware modules have been interfaced with the Blue Pill, you can power the device with a: 
+##### **5V 2 Amps DC Power Supply**
+> ###### DC-to-DC buck converter ICs are intended to take **input voltages** from various battery chemistries: `IN+ : IN-`
+
+## Bluetooth Connectivity :
+Open your machine's bluetooth settings to connect and pair the: `HC-05`.
+
+By default the **Passkey** is set to: `1234`.
+
+> ###### At this point if you have successfully established connection, the HC-05 red LED indicator will change its blinking pattern and at times won't blink at all.
+
+## Initiate [A G M] :
+###### Command Line Utility
+
+
